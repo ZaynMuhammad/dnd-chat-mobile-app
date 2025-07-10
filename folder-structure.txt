@@ -1,0 +1,96 @@
+dnd/
+├── app/
+│   ├── (auth)/                    # Protected routes
+│   │   ├── _layout.tsx
+│   │   ├── login.tsx
+│   │   └── register.tsx
+│   ├── (main)/                    # Main app routes
+│   │   ├── _layout.tsx
+│   │   ├── (tabs)/
+│   │   │   ├── _layout.tsx
+│   │   │   ├── chat.tsx           # Main chat interface
+│   │   │   ├── character.tsx      # Character management
+│   │   │   ├── campaign.tsx       # Campaign overview
+│   │   │   └── settings.tsx
+│   │   ├── combat.tsx             # Combat interface
+│   │   ├── choices.tsx            # Multiple choice interface
+│   │   └── character-creation.tsx
+│   ├── _layout.tsx
+│   └── index.tsx                  # Auth redirect
+├── lib/
+│   ├── auth/
+│   │   ├── better-auth.ts         # Better Auth configuration
+│   │   └── auth-utils.ts
+│   ├── ai/
+│   │   ├── openai-client.ts       # OpenAI API client
+│   │   ├── context-manager.ts     # Context optimization
+│   │   ├── prompt-templates.ts    # DM prompt templates
+│   │   └── rag-system.ts          # RAG implementation
+│   ├── database/
+│   │   ├── convex-client.ts       # Convex client
+│   │   ├── schema.ts              # Database schema
+│   │   └── queries.ts             # Database queries
+│   ├── pdf/
+│   │   ├── pdf-processor.ts       # PDF text extraction
+│   │   ├── chunker.ts             # Text chunking
+│   │   └── embeddings.ts          # Vector embeddings
+│   ├── game/
+│   │   ├── dice-roller.ts         # Dice mechanics
+│   │   ├── combat-engine.ts       # Combat logic
+│   │   ├── character-sheet.ts     # Character management
+│   │   └── event-tracker.ts       # Notable events
+│   └── utils/
+│       ├── constants.ts
+│       ├── types.ts
+│       └── helpers.ts
+├── components/
+│   ├── ui/                        # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── Input.tsx
+│   │   ├── Modal.tsx
+│   │   ├── Loading.tsx
+│   │   └── Card.tsx
+│   ├── chat/
+│   │   ├── ChatMessage.tsx
+│   │   ├── ChatInput.tsx
+│   │   ├── MessageList.tsx
+│   │   └── TypingIndicator.tsx
+│   ├── character/
+│   │   ├── CharacterSheet.tsx
+│   │   ├── StatBlock.tsx
+│   │   ├── InventoryItem.tsx
+│   │   └── SkillsList.tsx
+│   ├── combat/
+│   │   ├── CombatInterface.tsx
+│   │   ├── DiceRoller.tsx
+│   │   ├── InitiativeTracker.tsx
+│   │   └── HealthBar.tsx
+│   ├── choices/
+│   │   ├── ChoiceCard.tsx
+│   │   ├── ChoiceButton.tsx
+│   │   └── ChoicesList.tsx
+│   └── game/
+│       ├── EventLogger.tsx
+│       ├── LocationCard.tsx
+│       └── NPCCard.tsx
+├── hooks/
+│   ├── useAuth.ts
+│   ├── useChat.ts
+│   ├── useCharacter.ts
+│   ├── useCombat.ts
+│   ├── useChoices.ts
+│   └── useGame.ts
+├── convex/                        # Convex backend
+│   ├── schema.ts
+│   ├── auth.ts
+│   ├── characters.ts
+│   ├── campaigns.ts
+│   ├── messages.ts
+│   ├── events.ts
+│   └── search.ts                  # Vector search
+└── assets/
+    ├── pdfs/                      # PDF files
+    │   ├── dnd-5e-rules.pdf
+    │   └── fantasy-setting.pdf
+    ├── dice/                      # Dice images/sounds
+    └── fonts/
