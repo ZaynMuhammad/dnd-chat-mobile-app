@@ -43,26 +43,24 @@ export function ChatScreen() {
   };
 
   return (
-    <View className="flex-1 bg-black">
-      <View className="flex-1 px-4 pt-4">
-        <Text className="text-white text-xl font-bold mb-4 text-center">
-          Chat
-        </Text>
-        <ScrollView
-          className="flex-1"
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 20 }}
-        >
-          {messages.map((message) => (
-            <ChatMessage
-              key={message.id}
-              message={message.text}
-              isAI={message.isAI}
-              timestamp={message.timestamp}
-            />
-          ))}
-        </ScrollView>
-      </View>
+    <View className="flex-1 bg-black px-4 pb-4">
+      <Text className="text-white text-xl font-bold mb-4 text-center">
+        Chat
+      </Text>
+      <ScrollView
+        className="flex-1"
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 20 }}
+      >
+        {messages.map((message) => (
+          <ChatMessage
+            key={message.id}
+            message={message.text}
+            isAI={message.isAI}
+            timestamp={message.timestamp}
+          />
+        ))}
+      </ScrollView>
       <ChatInput onSend={handleSendMessage} />
     </View>
   );

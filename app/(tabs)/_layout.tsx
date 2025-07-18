@@ -1,11 +1,12 @@
+import { HapticTab } from "@/components/HapticTab";
+import TabBarBackground from "@/components/ui/TabBarBackground";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import Entypo from "@expo/vector-icons/Entypo";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
-
-import { HapticTab } from "@/components/HapticTab";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import TabBarBackground from "@/components/ui/TabBarBackground";
-import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -36,7 +37,7 @@ export default function TabLayout() {
         options={{
           title: "Chat",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="message.fill" color={color} />
+            <Entypo name="home" size={24} color={color} />
           ),
         }}
       />
@@ -45,7 +46,11 @@ export default function TabLayout() {
         options={{
           title: "Inventory",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="bag.fill" color={color} />
+            <MaterialCommunityIcons
+              name="treasure-chest"
+              size={24}
+              color={color}
+            />
           ),
         }}
       />
@@ -54,7 +59,7 @@ export default function TabLayout() {
         options={{
           title: "Stats",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="chart.bar.fill" color={color} />
+            <MaterialCommunityIcons name="chart-bar" size={24} color={color} />
           ),
         }}
       />
@@ -63,7 +68,7 @@ export default function TabLayout() {
         options={{
           title: "Settings",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="gearshape.fill" color={color} />
+            <FontAwesome name="gear" size={24} color={color} />
           ),
         }}
       />
