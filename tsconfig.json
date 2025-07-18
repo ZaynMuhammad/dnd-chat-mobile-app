@@ -1,12 +1,21 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    /* strictness */
     "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "bundler",
+    "noEmit": true
   },
-  "noUncheckedIndexedAccess": true,
   "include": [
     "**/*.ts",
     "**/*.tsx",
