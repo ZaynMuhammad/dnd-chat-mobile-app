@@ -2,6 +2,8 @@
 
 - Fix colors to use system default. Light/Dark
 - Create onboarding (Buttons to select class, character creation, background, stat allocation...)
+- Implement dice rolls
+- Plan and implement combat
 - Rename generate response to a better name
 - Center the ai response
 - Add button to list adventures/chats
