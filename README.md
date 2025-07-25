@@ -1,14 +1,29 @@
 # TODO:
 
+- Fix colors to use system default. Light/Dark
+- Create onboarding (Buttons to select class, character creation, background, stat allocation...)
+- Rename generate response to a better name
+- Center the ai response
+- Add button to list adventures/chats
+- Experiment with temp
+- Figure out a way to keep track of story and events (Summarize with AI? What's the cost of using AI to summarize? Record deaths and major events manually?)
+- Fix insets at top of chat page to align with rest of screens/tabs
+  - Sub:
+    -Seperate header from msgs.
+- Work an core AI functionality now. Got a basic UI down.
+  - Subtasks:
+    - Setup openrouter api route
+    - Setup convex
+    - Setup convex vector db
+    - Work on pdf splitter to be able to split the rule book
+    - Run some tests on a small campaign. (start with 2 charcters in a room. Come up with key events.)
 - Add tab icons
 - Fix header bar styling
 - Make art for items
 - Define side characters
-- Setup AI
 - Run tests for prompts that will work with dnd
 - Work on split pdf to chunk data and send over to AI for RAG
 - Add react native safe area
 - Make custom sprite icons for tab bar
 - Remove chat bubble from AI response text. Make it appear on background like t3chat
 - Add Valibot
-- Fix colors to use system default. Light/Dark
