@@ -12,7 +12,9 @@ export function ChatMessage({ message, isAI, timestamp }: ChatMessageProps) {
   const { colors } = useTheme();
 
   return (
-    <View className={`flex-row ${isAI ? "justify-start" : "justify-end"} mb-3`}>
+    <View
+      className={`flex-row ${isAI ? "justify-center" : "justify-end"} mb-3`}
+    >
       <View
         className={`max-w-[80%] px-4 py-3 rounded-2xl ${
           isAI

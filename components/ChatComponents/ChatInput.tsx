@@ -19,9 +19,6 @@ export function ChatInput({
   const insets = useSafeAreaInsets();
   const { colors } = useTheme();
 
-
-
-
   const handleSend = () => {
     if (message.trim() && !disabled) {
       onSend(message.trim());
@@ -50,7 +47,7 @@ export function ChatInput({
         onPress={handleSend}
         disabled={isSendDisabled}
         className={`w-10 h-10 rounded-full items-center justify-center ${
-          isSendDisabled ? "bg-neutral-300" : "bg-primary-600"
+          isSendDisabled ? "bg-neutral-300" : "bg-primary-700"
         }`}
       >
         <IconSymbol

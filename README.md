@@ -1,5 +1,7 @@
 # TODO:
 
+- Setup a monorepo for pdf splitting. Need to switch to pnpm workspaces. Figure out how to setup Node runtime for pdf splitting and keep it seperate from expo. Or maybe seperate the pdf service entirely.
+- Clean up code and fix errors. Start putting in Valibot.
 - Fix colors to use system default. Light/Dark
 - Create onboarding (Buttons to select class, character creation, background, stat allocation...)
 - Implement dice rolls
