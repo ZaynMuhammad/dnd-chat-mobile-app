@@ -1,4 +1,4 @@
-import { ChatScreen } from "@/components/ChatComponents/ChatScreen";
+import { ChatScreen } from "@/components/Chat/ChatScreen";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 

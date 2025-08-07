@@ -6,6 +6,7 @@ import {
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "../global.css";
@@ -23,17 +24,19 @@ function RootLayoutContent() {
   }
 
   return (
-    <NavigationThemeProvider
-      value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-    >
-      <SafeAreaProvider>
-        <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-      </SafeAreaProvider>
-    </NavigationThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationThemeProvider
+        value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+      >
+        <SafeAreaProvider>
+          <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+        </SafeAreaProvider>
+      </NavigationThemeProvider>
+    </GestureHandlerRootView>
   );
 }
 
