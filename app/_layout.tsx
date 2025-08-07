@@ -31,7 +31,7 @@ function RootLayoutContent() {
         <SafeAreaProvider>
           <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
           <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
             <Stack.Screen name="+not-found" />
           </Stack>
         </SafeAreaProvider>

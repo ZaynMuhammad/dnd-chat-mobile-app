@@ -14,19 +14,17 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "#8B5CF6", // Purple accent
-        tabBarInactiveTintColor: "#6B7280", // Gray for inactive
+        tabBarActiveTintColor: "#8B5CF6",
+        tabBarInactiveTintColor: "#6B7280",
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: {
-          backgroundColor: "#000000", // Black background
+          backgroundColor: "#000000",
           borderTopColor: "#1F2937",
           borderTopWidth: 1,
           ...Platform.select({
-            ios: {
-              position: "absolute",
-            },
+            ios: { position: "absolute" },
             default: {},
           }),
         },
