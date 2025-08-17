@@ -6,7 +6,7 @@ import {
 } from "@react-navigation/native";
 import { Drawer } from "expo-router/drawer";
 import React from "react";
-import { TouchableOpacity } from "react-native";
+import { Dimensions, TouchableOpacity } from "react-native";
 
 function HeaderMenuButton() {
   const navigation = useNavigation();
@@ -34,11 +34,14 @@ export default function DrawerLayout() {
       <Drawer.Screen
         name="(tabs)"
         options={({ route }) => {
+          const { width } = Dimensions.get("window");
           const focused = getFocusedRouteNameFromRoute(route as any) ?? "index";
           const isChat = focused === "index";
           return {
             title: "Home",
             swipeEnabled: isChat,
+            swipeEdgeWidth: isChat ? width : 50,
+            swipeMinDistance: isChat ? 5 : 20,
           } as const;
         }}
       />
