@@ -1,0 +1,213 @@
+{
+  "name": "DnD Dungeon Master App",
+  "purpose": "Single-player D&D chat app with an AI Dungeon Master.",
+  "capabilities": [
+    "Chat-based gameplay",
+    "Character and campaign management",
+    "PDF rulebook ingestion and chunking",
+    "Vector search for contextual rule retrieval",
+    "Authentication (Google OAuth via Better Auth)",
+    "Real-time database (Convex)",
+    "AI responses via Google Gemini 2.5 Flash"
+  ],
+  "nonGoals": ["Multi-user synchronous sessions", "Full combat/dice system"],
+  "techStack": {
+    "runtime": { "reactNative": "0.79.5", "expo": "53.0.20" },
+    "language": "TypeScript 5.8.3",
+    "packageManager": "Bun",
+    "styling": "NativeWind (Tailwind for RN)",
+    "navigation": "Expo Router + React Navigation (Drawer + Tabs)",
+    "db": "Convex (realtime + vector search)",
+    "ai": "@google/genai (Gemini 2.5 Flash)",
+    "validation": "Valibot"
+  },
+  "env": {
+    "required": ["EXPO_PUBLIC_GEMINI_API_KEY", "CONVEX_DEPLOYMENT"],
+    "examples": {
+      "EXPO_PUBLIC_GEMINI_API_KEY": "your_gemini_api_key",
+      "CONVEX_DEPLOYMENT": "https://xxxx.convex.cloud"
+    }
+  },
+  "commands": {
+    "install": ["bun install"],
+    "run": ["bun start", "bun run ios", "bun run android", "bun run web"],
+    "db": ["npx convex dev", "npx convex deploy"],
+    "quality": ["bun run lint", "bun run reset-project"]
+  },
+  "projectStructure": {
+    "app": [
+      "_layout.tsx",
+      "(auth)/_layout.tsx",
+      "(auth)/login.tsx",
+      "(auth)/register.tsx",
+      "(drawer)/_layout.tsx",
+      "(drawer)/(tabs)/_layout.tsx",
+      "(drawer)/(tabs)/index.tsx",
+      "(drawer)/(tabs)/inventory.tsx",
+      "(drawer)/(tabs)/settings.tsx",
+      "(drawer)/(tabs)/stats.tsx"
+    ],
+    "api": ["ai+api.ts"],
+    "components": [
+      "Chat/ChatScreen.tsx",
+      "Chat/ChatInput.tsx",
+      "Chat/ChatMessage.tsx",
+      "Chat/SideMenu.tsx",
+      "ui/*"
+    ],
+    "lib": [
+      "ai/context-manager.ts",
+      "ai/batch-actions.ts",
+      "auth/authService.ts",
+      "auth/client.ts",
+      "auth/types.ts",
+      "database/*"
+    ],
+    "hooks": [
+      "useAuth.tsx",
+      "useChat.ts",
+      "useCampaigns.ts",
+      "useColorScheme.ts"
+    ],
+    "convex": ["schema.ts"]
+  },
+  "navigation": {
+    "root": "app/_layout.tsx",
+    "drawer": {
+      "layout": "app/(drawer)/_layout.tsx",
+      "enabledOnlyOn": "app/(drawer)/(tabs)/index.tsx",
+      "fullWidthSwipeOnChat": true,
+      "floatingToggleOnChat": true,
+      "disabledElsewhere": true
+    },
+    "tabsLayout": "app/(drawer)/(tabs)/_layout.tsx"
+  },
+  "dataModel": {
+    "tables": [
+      "users",
+      "characters",
+      "campaigns",
+      "messages",
+      "events",
+      "ruleChunks",
+      "pdfDocuments",
+      "pdfChunks"
+    ],
+    "embeddings": ["ruleChunks", "pdfChunks"]
+  },
+  "ai": {
+    "provider": "Google Gemini 2.5 Flash (@google/genai)",
+    "temperature": 0.6,
+    "systemRole": "D&D Dungeon Master",
+    "contextManager": {
+      "file": "lib/ai/context-manager.ts",
+      "inputs": [
+        "recent messages (windowed)",
+        "recent events",
+        "character snapshot",
+        "top-K ruleChunks/pdfChunks via vector search"
+      ],
+      "responsibilities": [
+        "query embeddings",
+        "token budgeting",
+        "trim history",
+        "assemble prompt payload"
+      ]
+    }
+  },
+  "guidelines": {
+    "react": [
+      "Extract components instead of nested conditionals",
+      "Prefer derived state; minimize local state",
+      "useRef for non-reactive values",
+      "useEffect only for external sync/I/O",
+      "Avoid unnecessary useMemo/useCallback"
+    ],
+    "styling": [
+      "Use NativeWind for all styles",
+      "Use semantic color tokens from tailwind.config.js",
+      "Maintain consistent spacing/typography"
+    ],
+    "typescript": [
+      "Strict type checking",
+      "Define interfaces for data structures",
+      "Prefer inference where reasonable",
+      "Runtime validation with Valibot"
+    ],
+    "comments": ["Only for races, long-lived TODOs, tricky logic"]
+  },
+  "workflows": {
+    "addScreen": [
+      "Create file under app/(drawer)/(tabs)/",
+      "Register in app/(drawer)/(tabs)/_layout.tsx",
+      "Update navigation types if needed"
+    ],
+    "addComponent": [
+      "Create under components/",
+      "PascalCase component names",
+      "Typed props with interfaces",
+      "Style with NativeWind"
+    ],
+    "dbOperation": [
+      "Define schema in convex/schema.ts",
+      "Implement Convex functions",
+      "Use Convex hooks; handle loading/error"
+    ],
+    "extendAI": [
+      "Extend lib/ai/context-manager.ts",
+      "Update system prompt/handlers in api/ai+api.ts",
+      "Add message/event types to schema",
+      "Implement robust error handling"
+    ]
+  },
+  "troubleshooting": {
+    "metro": "bun run reset-project",
+    "convex": "Verify env vars and CONVEX_DEPLOYMENT",
+    "ai": "Check EXPO_PUBLIC_GEMINI_API_KEY and quotas",
+    "navigation": "Verify route names and layout registration"
+  },
+  "performance": [
+    "Virtualize long chat lists",
+    "Cache images",
+    "Keep state flat to minimize re-renders",
+    "Trim AI context aggressively",
+    "Use vector search to narrow rules",
+    "Cache frequent queries; monitor AI usage"
+  ],
+  "security": [
+    "Secrets in Convex (server-side)",
+    "Use env vars for API keys",
+    "Enforce auth on server routes",
+    "Validate inputs with Valibot",
+    "HTTPS-only"
+  ],
+  "roadmap": [
+    "Dice rolling",
+    "Combat mechanics",
+    "Character creation wizard",
+    "PDF rulebook integration",
+    "Multiplayer and campaign sharing"
+  ],
+  "techDebt": [
+    "Error boundaries",
+    "Test suite",
+    "Bundle size",
+    "Accessibility",
+    "Optional: pnpm workspaces"
+  ],
+  "prProcess": [
+    "Branch from main",
+    "Follow style guidelines",
+    "Test on iOS and Android",
+    "Update docs",
+    "Submit PR with clear description"
+  ],
+  "reviewChecklist": [
+    "Follows patterns",
+    "Proper error handling",
+    "Types defined",
+    "NativeWind styles applied",
+    "No console.log in production",
+    "Sensible component structure"
+  ]
+}

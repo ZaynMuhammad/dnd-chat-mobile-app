@@ -1,0 +1,13 @@
+Goal: Modify Convex schema and related code.
+
+Constraints:
+- Update convex/schema.ts with strict types.
+- Create/modify Convex functions to read/write new fields.
+- Validate inputs with Valibot.
+- Update hooks/components to handle loading and error states.
+
+Steps:
+1) Edit convex/schema.ts: add/modify table(s) and indexes (including vector indexes if needed).
+2) Implement Convex functions for CRUD and vector search (if applicable).
+3) Update client-side usage: hooks in hooks/* and components consuming data.
+4) Test locally with npx convex dev.

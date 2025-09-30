@@ -1,0 +1,14 @@
+You are modifying a React Native + Expo Router app.
+
+Goal: Add a new tab screen under app/(drawer)/(tabs)/.
+
+Constraints:
+- Register the new screen in app/(drawer)/(tabs)/_layout.tsx.
+- Drawer remains enabled only on index.tsx (Chat). Do not enable drawer on the new screen.
+- Use TypeScript and NativeWind. Keep state minimal.
+
+Steps:
+1) Create app/(drawer)/(tabs)/<screenName>.tsx exporting a default component.
+2) Add the route to the tabs config in app/(drawer)/(tabs)/_layout.tsx with a title and icon if applicable.
+3) If new types are needed, update navigation types accordingly.
+4) Ensure Prettier width 80 and no console.log in production code.

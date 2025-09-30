@@ -1,0 +1,16 @@
+Goal: Extend AI context assembly.
+
+Context:
+- ContextManager in lib/ai/context-manager.ts collects: recent messages, recent events, character snapshot, top-K ruleChunks/pdfChunks via Convex vector search.
+- AI: Gemini 2.5 Flash, temperature 0.6, DM persona.
+
+Task:
+- Add a new context source: <describe_source>.
+- Keep token budget constraints; trim history as needed.
+
+Steps:
+1) Update lib/ai/context-manager.ts to fetch and merge <describe_source>.
+2) Ensure vector search queries remain top-K and bounded.
+3) Update payload assembly in api/ai+api.ts to include the new segment.
+4) Add types and validation (Valibot) if the new data crosses boundaries.
+5) Add error handling and fallbacks if the new source is empty/unavailable.

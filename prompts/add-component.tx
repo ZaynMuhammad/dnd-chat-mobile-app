@@ -1,0 +1,12 @@
+Goal: Add a reusable component.
+
+Constraints:
+- Place in components/<Area>/<ComponentName>.tsx (Area optional).
+- Use TypeScript interfaces for props; prefer inference where possible.
+- Style with NativeWind semantic tokens (tailwind.config.js).
+- Avoid unnecessary state; no nested ternaries (extract subcomponents).
+
+Steps:
+1) Create the component file with typed props and export default.
+2) Add minimal tests or usage example in a consuming screen.
+3) Ensure accessibility props for touchables and images where relevant.
