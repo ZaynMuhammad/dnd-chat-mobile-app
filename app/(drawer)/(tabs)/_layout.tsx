@@ -20,6 +20,9 @@ export default function TabLayout() {
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
+        sceneContainerStyle: {
+          backgroundColor: colors.background.primary,
+        },
         tabBarStyle: {
           backgroundColor: colors.surface.primary,
           borderTopColor:

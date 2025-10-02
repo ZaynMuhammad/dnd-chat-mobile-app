@@ -30,15 +30,26 @@ export function ChatInput({
 
   return (
     <View
-      className="flex-row items-center px-4 py-4 bg-surface dark:bg-surface-dark border-t border-border-primary dark:border-border-secondary"
-      style={{ paddingBottom: insets.bottom > 0 ? insets.bottom + 12 : 0 }}
+      className="flex-row items-center px-4 py-4"
+      style={{
+        backgroundColor: colors.surface.primary,
+        borderTopColor: colors.border.secondary,
+        borderTopWidth: 1,
+        paddingBottom: insets.bottom > 0 ? insets.bottom + 12 : 0,
+      }}
     >
       <TextInput
         value={message}
         onChangeText={setMessage}
         placeholder={placeholder}
         placeholderTextColor={colors.text.tertiary}
-        className="flex-1 bg-surface-secondary dark:bg-surface-dark text-text dark:text-text-dark px-4 py-3 rounded-full border border-border-secondary dark:border-border-primary mr-3"
+        className="flex-1 px-4 py-3 rounded-full mr-3"
+        style={{
+          backgroundColor: colors.surface.secondary,
+          borderColor: colors.border.secondary,
+          borderWidth: 1,
+          color: colors.text.primary,
+        }}
         multiline
         maxLength={500}
         editable={!disabled}

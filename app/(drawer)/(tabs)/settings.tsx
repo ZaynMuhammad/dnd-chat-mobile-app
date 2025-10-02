@@ -9,7 +9,10 @@ export default function SettingsScreen() {
   const { colors } = useTheme();
 
   return (
-    <SafeAreaView className="flex-1 bg-background dark:bg-background-dark">
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: colors.background.primary }}
+    >
       <View className="flex-1 px-4 pt-4">
         <Text className="text-text dark:text-text-dark text-xl font-bold mb-4 text-center">
           Settings
@@ -17,7 +20,10 @@ export default function SettingsScreen() {
         <ScrollView className="flex-1">
           <ThemeToggle />
 
-          <View className="mt-4 bg-surface dark:bg-surface-dark rounded-lg p-4 mb-4 border border-border-primary dark:border-border-secondary">
+          <View
+            className="mt-4 rounded-lg p-4 mb-4 border border-border-primary dark:border-border-secondary"
+            style={{ backgroundColor: colors.surface.secondary }}
+          >
             <Text className="text-text dark:text-text-dark text-lg font-semibold mb-4">
               Game Settings
             </Text>
@@ -41,7 +47,10 @@ export default function SettingsScreen() {
             </TouchableOpacity>
           </View>
 
-          <View className="bg-surface dark:bg-surface-dark rounded-lg p-4 mb-4 border border-border-primary dark:border-border-secondary">
+          <View
+            className="rounded-lg p-4 mb-4 border border-border-primary dark:border-border-secondary"
+            style={{ backgroundColor: colors.surface.secondary }}
+          >
             <Text className="text-text dark:text-text-dark text-lg font-semibold mb-4">
               Account
             </Text>
@@ -77,7 +86,10 @@ export default function SettingsScreen() {
             </TouchableOpacity>
           </View>
 
-          <View className="bg-surface dark:bg-surface-dark rounded-lg p-4 mb-4 border border-border-primary dark:border-border-secondary">
+          <View
+            className="rounded-lg p-4 mb-4 border border-border-primary dark:border-border-secondary"
+            style={{ backgroundColor: colors.surface.secondary }}
+          >
             <Text className="text-text dark:text-text-dark text-lg font-semibold mb-4">
               About
             </Text>

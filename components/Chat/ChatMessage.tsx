@@ -1,3 +1,4 @@
+import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
 import { Text, View } from "react-native";
 
@@ -8,6 +9,8 @@ interface ChatMessageProps {
 }
 
 export function ChatMessage({ message, isAI, timestamp }: ChatMessageProps) {
+  const { colors } = useTheme();
+
   return (
     <View
       className={`flex-row ${isAI ? "justify-center" : "justify-end"} mb-3`}
@@ -15,9 +18,17 @@ export function ChatMessage({ message, isAI, timestamp }: ChatMessageProps) {
       <View
         className={`max-w-[80%] px-4 py-3 rounded-2xl ${
           isAI
-            ? "bg-surface-secondary dark:bg-surface-dark border border-border-secondary"
+            ? "border"
             : "bg-primary-600 dark:bg-primary-500 border border-primary-500 dark:border-primary-400"
         }`}
+        style={
+          isAI
+            ? {
+                backgroundColor: colors.surface.secondary,
+                borderColor: colors.border.secondary,
+              }
+            : undefined
+        }
       >
         <Text
           className={`text-sm ${
