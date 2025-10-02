@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./app/**/*.{js,jsx,ts,tsx}",
     "./components/**/*.{js,jsx,ts,tsx}",
@@ -54,13 +55,17 @@ module.exports = {
 
         // Semantic colors
         text: {
-          primary: "#11181C",
+          DEFAULT: "#0B0F14",
+          dark: "#E6E6E6",
+          primary: "#0B0F14",
           secondary: "#475569",
           tertiary: "#64748b",
           inverse: "#ffffff",
         },
 
         background: {
+          DEFAULT: "#FFFFFF",
+          dark: "#0B0F14",
           primary: "#ffffff",
           secondary: "#f8fafc",
           tertiary: "#f1f5f9",
@@ -68,9 +73,11 @@ module.exports = {
         },
 
         surface: {
-          primary: "#ffffff",
-          secondary: "#f8fafc",
-          elevated: "#ffffff",
+          DEFAULT: "#F8F9FB",
+          dark: "#121821",
+          primary: "#F8F9FB",
+          secondary: "#ffffff",
+          elevated: "#F8F9FB",
           overlay: "rgba(0, 0, 0, 0.5)",
         },
 

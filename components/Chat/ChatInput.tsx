@@ -30,7 +30,7 @@ export function ChatInput({
 
   return (
     <View
-      className="flex-row items-center px-4 py-4 bg-surface-primary border-t border-border-primary"
+      className="flex-row items-center px-4 py-4 bg-surface dark:bg-surface-dark border-t border-border-primary dark:border-border-secondary"
       style={{ paddingBottom: insets.bottom > 0 ? insets.bottom + 12 : 0 }}
     >
       <TextInput
@@ -38,7 +38,7 @@ export function ChatInput({
         onChangeText={setMessage}
         placeholder={placeholder}
         placeholderTextColor={colors.text.tertiary}
-        className="flex-1 bg-surface-secondary text-text-primary px-4 py-3 rounded-full border border-border-secondary mr-3"
+        className="flex-1 bg-surface-secondary dark:bg-surface-dark text-text dark:text-text-dark px-4 py-3 rounded-full border border-border-secondary dark:border-border-primary mr-3"
         multiline
         maxLength={500}
         editable={!disabled}
@@ -47,13 +47,15 @@ export function ChatInput({
         onPress={handleSend}
         disabled={isSendDisabled}
         className={`w-10 h-10 rounded-full items-center justify-center ${
-          isSendDisabled ? "bg-neutral-300" : "bg-primary-700"
+          isSendDisabled
+            ? "bg-neutral-300 dark:bg-neutral-700"
+            : "bg-primary-700 dark:bg-primary-500"
         }`}
       >
         <IconSymbol
           size={20}
           name="arrow.up"
-          color={isSendDisabled ? colors.text.tertiary : "white"}
+          color={isSendDisabled ? colors.text.tertiary : colors.text.inverse}
         />
       </TouchableOpacity>
     </View>

@@ -1,6 +1,6 @@
 import { HapticTab } from "@/components/HapticTab";
 import TabBarBackground from "@/components/ui/TabBarBackground";
-import { useColorScheme } from "@/hooks/useColorScheme";
+import { useTheme } from "@/hooks/useColorScheme";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
@@ -9,19 +9,23 @@ import React from "react";
 import { Platform } from "react-native";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const { colorScheme, colors } = useTheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "#8B5CF6",
-        tabBarInactiveTintColor: "#6B7280",
+        tabBarActiveTintColor: colors.primary[500],
+        tabBarInactiveTintColor:
+          colorScheme === "dark" ? colors.text.tertiary : colors.text.secondary,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: {
-          backgroundColor: "#000000",
-          borderTopColor: "#1F2937",
+          backgroundColor: colors.surface.primary,
+          borderTopColor:
+            colorScheme === "dark"
+              ? colors.border.secondary
+              : colors.border.primary,
           borderTopWidth: 1,
           ...Platform.select({
             ios: { position: "absolute" },

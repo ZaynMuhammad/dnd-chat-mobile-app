@@ -1,5 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useColorScheme as useSystemColorScheme } from "react-native";
 import type { ColorScheme, ThemeColors } from "../constants/Colors";
 import { Colors } from "../constants/Colors";
@@ -30,17 +37,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const colors = Colors[colorScheme];
 
-  useEffect(() => {
-    loadThemeMode();
-  }, []);
-
-  useEffect(() => {
-    if (isLoaded) {
-      saveThemeMode(themeMode);
-    }
-  }, [themeMode, isLoaded]);
-
-  const loadThemeMode = async () => {
+  const loadThemeMode = useCallback(async () => {
     try {
       const savedMode = await AsyncStorage.getItem(THEME_STORAGE_KEY);
       if (savedMode && ["light", "dark", "system"].includes(savedMode)) {
@@ -51,35 +48,48 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setIsLoaded(true);
     }
-  };
+  }, []);
 
-  const saveThemeMode = async (mode: ThemeMode) => {
+  const saveThemeMode = useCallback(async (mode: ThemeMode) => {
     try {
       await AsyncStorage.setItem(THEME_STORAGE_KEY, mode);
     } catch (error) {
       console.warn("Failed to save theme mode:", error);
     }
-  };
+  }, []);
 
-  const setThemeMode = (mode: ThemeMode) => {
+  useEffect(() => {
+    loadThemeMode();
+  }, [loadThemeMode]);
+
+  useEffect(() => {
+    if (isLoaded) {
+      saveThemeMode(themeMode);
+    }
+  }, [isLoaded, saveThemeMode, themeMode]);
+
+  const setThemeMode = useCallback((mode: ThemeMode) => {
     setThemeModeState(mode);
-  };
+  }, []);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     if (themeMode === "system") {
       setThemeModeState(systemColorScheme === "dark" ? "light" : "dark");
     } else {
       setThemeModeState(themeMode === "light" ? "dark" : "light");
     }
-  };
+  }, [systemColorScheme, themeMode]);
 
-  const value: ThemeContextType = {
-    colorScheme,
-    themeMode,
-    colors,
-    setThemeMode,
-    toggleTheme,
-  };
+  const value = useMemo(
+    (): ThemeContextType => ({
+      colorScheme,
+      themeMode,
+      colors,
+      setThemeMode,
+      toggleTheme,
+    }),
+    [colorScheme, themeMode, colors, setThemeMode, toggleTheme]
+  );
 
   return React.createElement(ThemeContext.Provider, { value }, children);
 }

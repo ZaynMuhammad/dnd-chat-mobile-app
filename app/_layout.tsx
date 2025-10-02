@@ -9,6 +9,7 @@ import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { View } from "react-native";
 import "../global.css";
 
 import { ThemeProvider, useTheme } from "@/hooks/useColorScheme";
@@ -29,11 +30,17 @@ function RootLayoutContent() {
         value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
       >
         <SafeAreaProvider>
-          <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-          <Stack>
-            <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
-            <Stack.Screen name="+not-found" />
-          </Stack>
+          <View
+            className={`${
+              colorScheme === "dark" ? "dark" : ""
+            } flex-1 bg-background dark:bg-background-dark`}
+          >
+            <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+            <Stack>
+              <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+          </View>
         </SafeAreaProvider>
       </NavigationThemeProvider>
     </GestureHandlerRootView>

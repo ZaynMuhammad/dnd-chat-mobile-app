@@ -52,7 +52,7 @@ export const Colors = {
 
     // Semantic colors
     text: {
-      primary: "#11181C",
+      primary: "#0B0F14",
       secondary: "#475569",
       tertiary: "#64748b",
       inverse: "#ffffff",
@@ -62,13 +62,13 @@ export const Colors = {
       primary: "#ffffff",
       secondary: "#f8fafc",
       tertiary: "#f1f5f9",
-      inverse: "#0f172a",
+      inverse: "#ffffff",
     },
 
     surface: {
-      primary: "#ffffff",
-      secondary: "#f8fafc",
-      elevated: "#ffffff",
+      primary: "#F8F9FB",
+      secondary: "#ffffff",
+      elevated: "#F8F9FB",
       overlay: "rgba(0, 0, 0, 0.5)",
     },
 
@@ -170,23 +170,23 @@ export const Colors = {
 
     // Semantic colors
     text: {
-      primary: "#f8fafc",
+      primary: "#E6E6E6",
       secondary: "#cbd5e1",
       tertiary: "#94a3b8",
-      inverse: "#0f172a",
+      inverse: "#ffffff",
     },
 
     background: {
-      primary: "#0f172a",
-      secondary: "#1e293b",
-      tertiary: "#334155",
+      primary: "#0B0F14",
+      secondary: "#121821",
+      tertiary: "#1E2631",
       inverse: "#ffffff",
     },
 
     surface: {
-      primary: "#1e293b",
-      secondary: "#334155",
-      elevated: "#475569",
+      primary: "#121821",
+      secondary: "#1E2631",
+      elevated: "#243043",
       overlay: "rgba(0, 0, 0, 0.7)",
     },
 

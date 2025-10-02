@@ -6,19 +6,19 @@ import { useTheme } from "../hooks/useColorScheme";
 export function ThemeToggle() {
   const { themeMode, setThemeMode, colors } = useTheme();
 
-  const options: Array<{
+  const options: {
     mode: "light" | "dark" | "system";
     label: string;
     icon: keyof typeof Ionicons.glyphMap;
-  }> = [
+  }[] = [
     { mode: "light", label: "Light", icon: "sunny" },
     { mode: "dark", label: "Dark", icon: "moon" },
     { mode: "system", label: "System", icon: "settings" },
   ];
 
   return (
-    <View className="p-4 bg-surface-primary rounded-lg border border-border-primary">
-      <Text className="text-text-primary font-semibold text-lg mb-3">
+    <View className="p-4 bg-surface dark:bg-surface-dark rounded-lg border border-border-primary dark:border-border-secondary">
+      <Text className="text-text dark:text-text-dark font-semibold text-lg mb-3">
         Theme
       </Text>
       <View className="space-y-2">
@@ -28,8 +28,8 @@ export function ThemeToggle() {
             onPress={() => setThemeMode(option.mode)}
             className={`flex-row items-center justify-between p-3 rounded-lg border ${
               themeMode === option.mode
-                ? "bg-primary-100 border-primary-300"
-                : "bg-surface-secondary border-border-secondary"
+                ? "bg-primary-100 border-primary-300 dark:bg-primary-900/40 dark:border-primary-500"
+                : "bg-surface-secondary dark:bg-surface-dark border-border-secondary dark:border-border-primary"
             }`}
           >
             <View className="flex-row items-center space-x-3">
@@ -45,8 +45,8 @@ export function ThemeToggle() {
               <Text
                 className={`font-medium ${
                   themeMode === option.mode
-                    ? "text-primary-700"
-                    : "text-text-primary"
+                    ? "text-primary-700 dark:text-primary-300"
+                    : "text-text dark:text-text-dark"
                 }`}
               >
                 {option.label}
@@ -67,17 +67,19 @@ export function ThemeToggle() {
 }
 
 export function QuickThemeToggle() {
-  const { toggleTheme, colorScheme } = useTheme();
+  const { toggleTheme, colorScheme, colors } = useTheme();
 
   return (
     <TouchableOpacity
       onPress={toggleTheme}
-      className="p-2 rounded-full bg-surface-secondary border border-border-primary"
+      className="p-2 rounded-full bg-surface-secondary dark:bg-surface-dark border border-border-primary dark:border-border-secondary"
     >
       <Ionicons
         name={colorScheme === "dark" ? "sunny" : "moon"}
         size={20}
-        color={colorScheme === "dark" ? "#fbbf24" : "#3b82f6"}
+        color={
+          colorScheme === "dark" ? colors.warning[400] : colors.primary[500]
+        }
       />
     </TouchableOpacity>
   );
