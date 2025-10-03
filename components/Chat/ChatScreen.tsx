@@ -39,14 +39,20 @@ export function ChatScreen() {
   };
 
   return (
-    <View className="flex-1 bg-background dark:bg-background-dark">
+    <View
+      className="flex-1"
+      style={{ backgroundColor: colors.background.primary }}
+    >
       {/* Floating menu button (disabled when drawer is open) */}
       <TouchableOpacity
         accessibilityLabel="Open menu"
         disabled={isDrawerOpen}
         onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
-        className="absolute top-3 left-3 w-9 h-9 rounded-full bg-surface-secondary dark:bg-surface-dark items-center justify-center z-10"
-        style={{ opacity: isDrawerOpen ? 0.5 : 1 }}
+        className="absolute top-3 left-3 w-9 h-9 rounded-full items-center justify-center z-10"
+        style={{
+          backgroundColor: colors.surface.secondary,
+          opacity: isDrawerOpen ? 0.5 : 1,
+        }}
       >
         <Entypo name="menu" size={18} color={colors.text.secondary} />
       </TouchableOpacity>
@@ -77,7 +83,10 @@ export function ChatScreen() {
           ))}
 
           {isLoading && (
-            <View className="flex-row items-center space-x-2 p-4 bg-surface-secondary dark:bg-surface-dark rounded-lg mt-2">
+            <View
+              className="flex-row items-center space-x-2 p-4 rounded-lg mt-2"
+              style={{ backgroundColor: colors.surface.secondary }}
+            >
               <ActivityIndicator size="small" color={colors.primary[500]} />
               <Text className="text-text-secondary dark:text-text-tertiary text-sm">
                 Dungeon Master is thinking...

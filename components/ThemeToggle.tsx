@@ -17,7 +17,10 @@ export function ThemeToggle() {
   ];
 
   return (
-    <View className="p-4 bg-surface dark:bg-surface-dark rounded-lg border border-border-primary dark:border-border-secondary">
+    <View
+      className="p-4 rounded-lg border border-border-primary dark:border-border-secondary"
+      style={{ backgroundColor: colors.surface.secondary }}
+    >
       <Text className="text-text dark:text-text-dark font-semibold text-lg mb-3">
         Theme
       </Text>
@@ -29,8 +32,16 @@ export function ThemeToggle() {
             className={`flex-row items-center justify-between p-3 rounded-lg border ${
               themeMode === option.mode
                 ? "bg-primary-100 border-primary-300 dark:bg-primary-900/40 dark:border-primary-500"
-                : "bg-surface-secondary dark:bg-surface-dark border-border-secondary dark:border-border-primary"
+                : "border-border-secondary dark:border-border-primary"
             }`}
+            style={
+              themeMode === option.mode
+                ? undefined
+                : {
+                    backgroundColor: colors.surface.secondary,
+                    borderColor: colors.border.secondary,
+                  }
+            }
           >
             <View className="flex-row items-center space-x-3">
               <Ionicons
@@ -72,7 +83,8 @@ export function QuickThemeToggle() {
   return (
     <TouchableOpacity
       onPress={toggleTheme}
-      className="p-2 rounded-full bg-surface-secondary dark:bg-surface-dark border border-border-primary dark:border-border-secondary"
+      className="p-2 rounded-full border border-border-primary dark:border-border-secondary"
+      style={{ backgroundColor: colors.surface.secondary }}
     >
       <Ionicons
         name={colorScheme === "dark" ? "sunny" : "moon"}
